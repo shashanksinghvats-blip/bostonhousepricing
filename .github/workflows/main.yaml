@@ -19,7 +19,10 @@ jobs:
       - name: Install Heroku CLI
         run: curl https://cli-assets.heroku.com/install.sh | sh
 
-      - name: Build, Push and Release a Docker container to Heroku
+      - name: Set Heroku stack to container
+        run: heroku stack:set container --app ${{ secrets.HEROKU_APP_NAME }}
+
+      - name: Build and Push Docker to Heroku
         uses: gonuit/heroku-docker-deploy@v1.3.3
         with:
           email: ${{ secrets.HEROKU_EMAIL }}
