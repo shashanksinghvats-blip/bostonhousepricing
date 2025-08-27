@@ -30,7 +30,7 @@ def predict():
     print(final_input)
     output=regmodel.predict(final_input)[0]
     output=float(output)
-    return render_template("home.html",prediction_text="The predicted house price is Rs. {:.2f}/-".format(output))
+    return render_template("home.html",prediction_text="The predicted house price is ${:,.2f}".format(output * 1000))
 
 if  __name__=="__main__":  
     app.run(debug=True)
